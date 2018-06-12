@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.hp.huanxin.R;
 import com.example.hp.huanxin.adapter.ContactAdapter;
+import com.example.hp.huanxin.utils.StringUtils;
 import com.hyphenate.util.DensityUtil;
 
 import org.w3c.dom.Text;
@@ -80,20 +81,17 @@ public class Slidebar extends View {
 
            text.setText(slideBarSection);
 
-           int postion = 0;
 
            ContactAdapter contactAdapter = (ContactAdapter) recyclerView.getAdapter();
            List<String> data = contactAdapter.getData();
 
         for (int i = 0; i < data.size(); i++) {
-            if(data.get(i).equals(slideBarSection))
+            if(StringUtils.getInit(data.get(i)).equals(slideBarSection))
             {
-                recyclerView.smoothScrollToPosition(postion);
+                recyclerView.smoothScrollToPosition(i);
                 return;
             }
         }
-
-        recyclerView.smoothScrollToPosition(postion);
     }
 
     private void initview(Context context) {

@@ -26,6 +26,6 @@ public class StringUtils  {
 
             return "";
         }
-        return username.substring(0,1);
+        return username.substring(0,1).toUpperCase();
     }
 }
