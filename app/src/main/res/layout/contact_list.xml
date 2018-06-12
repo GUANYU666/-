@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:id="@+id/sw"
+        android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/contact_re"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:textAllCaps="true"
+        android:layout_width="wrap_content"
+        android:text="a"
+        android:id="@+id/tv_float"
+        android:background="@drawable/ease_show_head_toast_bg"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:textSize="40sp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+
+        />
+    <com.example.hp.huanxin.widget.Slidebar
+        android:paddingBottom="5dp"
+        android:id="@+id/slidebar"
+        android:layout_alignParentRight="true"
+        android:layout_width="30dp"
+        android:layout_height="match_parent" />
+</RelativeLayout>

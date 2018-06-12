@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="1dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:background="#e8e8e8"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_section"
+        android:textAllCaps="true"
+        android:text="A"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/iv_avatar"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/avatar1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_username"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="zhangsan"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
+</LinearLayout>
+</android.support.v7.widget.CardView>

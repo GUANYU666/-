@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/login_bk"
+    tools:context=".view.LoginActivity">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:src="@mipmap/avatar1"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="50dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:layout_margin="10dp"
+        android:id="@+id/et_username2"
+        android:imeOptions="actionNext"
+        android:hint="用户名"
+        android:layout_height="50dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:inputType="textPassword"
+        android:id="@+id/et_password2"
+        android:imeOptions="actionGo"
+        android:hint="密码"
+        android:layout_margin="10dp"
+        android:layout_height="50dp" />
+    
+    <Button
+        android:id="@+id/bt_login"
+        android:background="@drawable/btn_login_selector"
+        android:layout_width="match_parent"
+        android:text="登陆"
+        android:textColor="#ffffff"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="right"
+        android:textAllCaps="false"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/maincolor"
+        android:id="@+id/tv_newuser"
+        android:layout_marginRight="20dp"
+        android:text="新用户"
+        />
+</LinearLayout>
