@@ -2,20 +2,22 @@ package com.example.hp.huanxin.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.example.hp.huanxin.R;
 import com.example.hp.huanxin.utils.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder>{
-
-
+public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> implements SectionIndexer{
+    private SparseArray sparseArray = new SparseArray();
     private List<String>data;
     public List<String> getData()
     {
@@ -63,6 +65,31 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             }
 
         }
+    }
+
+    @Override
+    public String[] getSections() {
+        ArrayList<String> sections = new ArrayList<>();
+
+        for (int i = 0; i <data.size(); i++) {
+            String init = StringUtils.getInit(data.get(i));
+            if(sections.contains(init))
+            {
+                sections.add(init);
+                sparseArray.put(sections.size()-1,i);
+            }
+        }
+        return sections.toArray(new String[sections.size()]);
+    }
+
+    @Override
+    public int getPositionForSection(int sectionIndex) {
+        return (int) sparseArray.get(sectionIndex);
+    }
+
+    @Override
+    public int getSectionForPosition(int position) {
+        return 0;
     }
 
 

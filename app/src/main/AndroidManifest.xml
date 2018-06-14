@@ -29,7 +29,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <!-- 设置环信应用的AppKey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
@@ -63,8 +63,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.LoginActivity" android:launchMode="singleTask"></activity>
-        <activity android:name=".view.RegistActivity"></activity>
+        <activity
+            android:name=".view.LoginActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".view.RegistActivity" />
+        <activity android:name=".view.AddFriendActivity"></activity>
     </application>
 
 </manifest>

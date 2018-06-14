@@ -23,6 +23,7 @@ public class ContactsPresenterImp implements ContactsPresenter {
 
         //网络获取
         updata();
+
     }
 
     @Override
@@ -44,6 +45,9 @@ public class ContactsPresenterImp implements ContactsPresenter {
                     });
                     contactsList.clear();
                     contactsList.addAll(allContactsFromServer);
+
+                    DBUtils.savaContact(EMClient.getInstance().getCurrentUser(),contactsList);
+
 
                     ThreadUtils.runOnuiThread(new Runnable() {
                         @Override

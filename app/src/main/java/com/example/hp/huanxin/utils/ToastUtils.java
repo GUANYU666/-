@@ -8,14 +8,20 @@ import android.widget.Toast;
 public class ToastUtils {
     private static Toast toast;
     private static Handler handler = new Handler(Looper.getMainLooper());
-    public static void showToast(Context context,String msg)
+    public static void showToast(final Context context, final String msg)
     {
 
         if(toast==null)
         {
-            toast=Toast.makeText(context.getApplicationContext(),msg,Toast.LENGTH_LONG);
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    toast=Toast.makeText(context.getApplicationContext(),msg,Toast.LENGTH_LONG);
+                    toast.setText(msg);
+                }
+            });
         }
-        toast.setText(msg);
+
         if(Looper.myLooper()==Looper.getMainLooper())
         {
             toast.show();

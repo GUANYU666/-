@@ -12,10 +12,13 @@ import com.example.hp.huanxin.adapter.TabSelectedListenerAdapter;
 import com.example.hp.huanxin.common.BaseActivity;
 import com.example.hp.huanxin.common.BaseFragment;
 import com.example.hp.huanxin.utils.FragmentFactory;
+import com.hyphenate.EMContactListener;
+import com.hyphenate.chat.EMClient;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements EMContactListener {
     @BindView(R.id.fl_content)
     FrameLayout fr;
     @BindView(R.id.bottom_navigation)
@@ -29,7 +32,19 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         initFragment();
         initBottomBar();
+        initListener();
     }
+
+    private void initListener() {
+        EMClient.getInstance().contactManager().setContactListener(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EMClient.getInstance().contactManager().removeContactListener(this);
+    }
+
     private void initBottomBar() {
          badgeItem = new TextBadgeItem();
          badgeItem.setText("5")
@@ -72,6 +87,32 @@ public class MainActivity extends BaseActivity {
 
         BaseFragment fragment = FragmentFactory.getFragment(0);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_content,fragment,"0").commit();
+
+    }
+
+    @Override
+    public void onContactAdded(String s) {
+
+    }
+
+    @Override
+    public void onContactDeleted(String s) {
+
+    }
+
+    @Override
+    public void onContactInvited(String s, String s1) {
+
+        showToast("收到"+s+"发送过来的邀请:"+s1);
+    }
+
+    @Override
+    public void onFriendRequestAccepted(String s) {
+
+    }
+
+    @Override
+    public void onFriendRequestDeclined(String s) {
 
     }
 }

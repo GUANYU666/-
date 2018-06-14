@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.example.hp.huanxin.R;
@@ -19,6 +19,8 @@ import com.hyphenate.util.DensityUtil;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 public class Slidebar extends View {
@@ -53,13 +55,11 @@ public class Slidebar extends View {
             case MotionEvent.ACTION_UP:
                 setBackgroundColor(Color.TRANSPARENT);
                 break;
-
         }
         return true;
     }
 
     private void showToastAndScroll(float y) {
-
         if(text==null)
         {
             ViewGroup parent = (ViewGroup) getParent();
@@ -92,8 +92,25 @@ public class Slidebar extends View {
                 return;
             }
         }
+//
+//        RecyclerView.Adapter adapter = recyclerView.getAdapter();
+//        if(!(adapter instanceof SectionIndexer))
+//        {
+//           return;
+//        }
+//        SectionIndexer sectionIndexer = (SectionIndexer) adapter;
+//        String[] sections = (String[]) sectionIndexer.getSections();
+//        int sectionIndex = Arrays.binarySearch(sections, slideBarSection);
+//
+//        if(sectionIndex<0)
+//        {
+//            return;
+//        }
+//
+//        int positionForSection = sectionIndexer.getPositionForSection(sectionIndex);
+//
+//        recyclerView.scrollToPosition(positionForSection);
     }
-
     private void initview(Context context) {
          paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.parseColor("#8c8c8c"));

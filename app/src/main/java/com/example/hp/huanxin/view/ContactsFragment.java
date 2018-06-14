@@ -1,6 +1,4 @@
 package com.example.hp.huanxin.view;
-
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hp.huanxin.MainActivity;
 import com.example.hp.huanxin.R;
 import com.example.hp.huanxin.adapter.ContactAdapter;
 import com.example.hp.huanxin.common.BaseFragment;
@@ -25,13 +24,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContactsFragment extends BaseFragment implements ContactsView, SwipeRefreshLayout.OnRefreshListener {
-
-
+public class ContactsFragment extends BaseFragment implements ContactsView, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
     @BindView(R.id.iv_left)
     ImageView ivLeft;
     @BindView(R.id.tv_title)
@@ -41,7 +37,6 @@ public class ContactsFragment extends BaseFragment implements ContactsView, Swip
     @BindView(R.id.contactListview)
     ContactListview contactListview;
     Unbinder unbinder;
-
     private ContactAdapter contactAdapter;
     private ContactsPresenter mcontactsPresenter;
     @Override
@@ -50,11 +45,12 @@ public class ContactsFragment extends BaseFragment implements ContactsView, Swip
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contacts, container, false);
         unbinder = ButterKnife.bind(this, view);
+        ivRight.setVisibility(View.VISIBLE);
+        ivRight.setOnClickListener(this);
         mcontactsPresenter = new ContactsPresenterImp(this);
 
         return view;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -98,5 +94,16 @@ public class ContactsFragment extends BaseFragment implements ContactsView, Swip
     public void onRefresh() {
 
         mcontactsPresenter.updataContact();
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.iv_right:
+
+                MainActivity activity = (MainActivity) getActivity();
+                activity.startActivity(AddFriendActivity.class,false);
+                break;
+        }
     }
 }
